@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/MiloszKozaa/school-project.git/static/css/main.35a86408.css",
-    "main.js": "/MiloszKozaa/school-project.git/static/js/main.46e4182d.js",
-    "static/js/787.8aeaf8f0.chunk.js": "/MiloszKozaa/school-project.git/static/js/787.8aeaf8f0.chunk.js",
-    "static/media/logo.svg": "/MiloszKozaa/school-project.git/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/MiloszKozaa/school-project.git/index.html",
-    "main.35a86408.css.map": "/MiloszKozaa/school-project.git/static/css/main.35a86408.css.map",
-    "main.46e4182d.js.map": "/MiloszKozaa/school-project.git/static/js/main.46e4182d.js.map",
-    "787.8aeaf8f0.chunk.js.map": "/MiloszKozaa/school-project.git/static/js/787.8aeaf8f0.chunk.js.map"
+    "main.css": "/school-project/static/css/main.35a86408.css",
+    "main.js": "/school-project/static/js/main.fdfb2143.js",
+    "static/js/787.8aeaf8f0.chunk.js": "/school-project/static/js/787.8aeaf8f0.chunk.js",
+    "static/media/logo.svg": "/school-project/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/school-project/index.html",
+    "main.35a86408.css.map": "/school-project/static/css/main.35a86408.css.map",
+    "main.fdfb2143.js.map": "/school-project/static/js/main.fdfb2143.js.map",
+    "787.8aeaf8f0.chunk.js.map": "/school-project/static/js/787.8aeaf8f0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.35a86408.css",
-    "static/js/main.46e4182d.js"
+    "static/js/main.fdfb2143.js"
   ]
 }
