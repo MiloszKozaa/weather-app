@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
-import Output from './Output';
 
 const Input = () => {
-  let binaryNumber = '';
   let index = 1;
   let number = 1;
   let a = new Array(100);
@@ -17,6 +15,7 @@ const Input = () => {
     let inputNumber = parseInt(event.target.value);
     setInput(inputNumber);
     console.log(inputNumber);
+
     while (number !== 0) {
       number = divide(inputNumber, 2);
       a[index] = inputNumber % 2;
@@ -25,7 +24,7 @@ const Input = () => {
     }
 
     for (let j = index - 1; j > 0; j--) {
-      binaryNumber = binaryNumber + a[j];
+      console.log(a[j]);
     }
   };
 
@@ -38,7 +37,11 @@ const Input = () => {
         onChange={getInputValue}
         value={input}
       />
-      <Output output={parseInt(binaryNumber)} />
+      <ol>
+        {a.map(a => (
+          <li key={a}>{a}</li>
+        ))}
+      </ol>
     </div>
   );
 };
