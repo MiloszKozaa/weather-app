@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { InputProps } from './Input.types';
 
-const Input = ({ value, input }: InputProps) => {
+const Input = ({ value, input, output }: InputProps) => {
   let a = new Array(100);
 
-  const [outputValue, SetOutputValue] = useState<number | null>();
+  const [outputValue, SetOutputValue] = useState<string | null>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (input !== NaN) {
-      input = parseInt(event.target.value);
+    input = parseInt(event.target.value);
+
+    if (event.target.value.length !== 0) {
+      console.log('number');
       binaryConversion(input);
-      SetOutputValue(input);
+      SetOutputValue(output);
     } else {
-      SetOutputValue(0);
+      SetOutputValue(null);
     }
   };
 
@@ -23,15 +25,16 @@ const Input = ({ value, input }: InputProps) => {
   const binaryConversion = (inputNumber: number) => {
     let number = 1;
     let index = 1;
-
     console.log('NEW NUMBER');
     while (number !== 0) {
       number = divide(inputNumber, 2);
       a[index] = inputNumber % 2;
-      console.log(a[index], index, inputNumber);
+      console.log(`i:${index}   ${a[index]} | ${inputNumber}`);
       index++;
       inputNumber = number;
     }
+
+    output = a.reverse().toString().replaceAll(',', '');
   };
 
   return (
