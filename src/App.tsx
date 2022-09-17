@@ -1,11 +1,11 @@
 import './App.css';
-import Input from './components/Input';
+import Conversion from './components/Conversion';
 
 function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <Input  />
+        <Conversion />
       </header>
     </div>
   );

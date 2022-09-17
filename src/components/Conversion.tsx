@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { InputProps } from './Input.types';
+import { ConversionProps } from './Conversion.types';
+import Output from './Output';
 
-const Input = ({ value, input, output }: InputProps) => {
+const Input = ({ value, input, output }: ConversionProps) => {
   let a = new Array(100);
 
   const [outputValue, SetOutputValue] = useState<string | null>();
@@ -39,8 +40,8 @@ const Input = ({ value, input, output }: InputProps) => {
 
   return (
     <>
-      <input type='number' value={value} onChange={handleChange} />
-      <p>{outputValue}</p>
+      <input type='number' onChange={handleChange} />
+      <Output outputValue={outputValue}></Output>
     </>
   );
 };
