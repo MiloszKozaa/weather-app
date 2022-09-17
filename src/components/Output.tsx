@@ -1,15 +1,14 @@
 import './Output.css';
-type OutputValue = {
-  outputValue?: string | null | undefined;
-};
-const Output = ({ outputValue }: OutputValue) => {
+import { AppTypes } from '../App.types';
+
+const Output = ({ outputValue }: AppTypes) => {
   return (
-    <>
-    <div className='outputTitle'>Binary number</div>
+    <div>
+      <div className='outputTitle'>Binary number</div>
       <div className='outputWrapper'>
         <div className='outputNumber'>{outputValue}</div>
       </div>
-    </>
+    </div>
   );
 };
 

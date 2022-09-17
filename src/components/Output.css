@@ -2,12 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: hidden;
+  overflow: hidden;
   min-width: 200px;
-  max-width: 700px;
   height: 40px;
   background-color: #3da3ed;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 30px;
   box-shadow: 0 0 30px #3da3ed;
 }
@@ -18,6 +17,9 @@
 }
 
 .outputTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 20px;
   font-size: 20px;
   border-radius: 20px 20px 0 0;
@@ -25,4 +27,5 @@
   /*background-color: #fff;
   color: #2d2d2d;*/
   color: #fff;
+  margin-bottom: 10px;
 }
