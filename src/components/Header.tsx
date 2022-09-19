@@ -9,7 +9,7 @@ const Header = () => {
           link='https://en.wikipedia.org/wiki/Binary_number'
           linkTitle='binary'
         />
-        calculator
+        converter
       </div>
       <div className='headerMade'>
         Site made by
