@@ -1,0 +1,37 @@
+{
+  "coord": { "lon": 19.1562, "lat": 50.7806 },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 283.22,
+    "feels_like": 282.61,
+    "temp_min": 282.27,
+    "temp_max": 283.65,
+    "pressure": 1018,
+    "humidity": 89,
+    "sea_level": 1018,
+    "grnd_level": 986
+  },
+  "visibility": 10000,
+  "wind": { "speed": 3.57, "deg": 277, "gust": 7.97 },
+  "clouds": { "all": 95 },
+  "dt": 1663693593,
+  "sys": {
+    "type": 2,
+    "id": 2020533,
+    "country": "PL",
+    "sunrise": 1663647967,
+    "sunset": 1663692467
+  },
+  "timezone": 7200,
+  "id": 3100946,
+  "name": "Częstochowa",
+  "cod": 200
+}

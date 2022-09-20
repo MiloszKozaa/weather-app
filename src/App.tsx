@@ -1,29 +1,60 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import { AppTypes } from './App.types';
+import { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 
 const App = () => {
-  const [city, citySet] = useState<string>();
-  const [postal, postalSet] = useState<string>();
-  const [timezone, timezoneSet] = useState<string>();
+  const [data, dataSet] = useState({});
+  const [location, locationSet] = useState('');
+  const [lat, latSet] = useState('');
+  const [lon, lonSet] = useState('');
 
-  const fetchText = async () => {
-    let url = 'https://ipinfo.io/json?token=560b583d55512f';
-    let response = await fetch(url);
-    let data = await response.json();
-    citySet(data.city);
-    postalSet(data.postal);
-    timezoneSet(data.timezone);
+  /*const searchLocation = (event: any) => {
+    if (event.key === 'Enter') {
+      axios.get(url).then((response: any) => {
+        dataSet(response.data);
+        console.log(response.data);
+      });
+      locationSet('');
+    }
+  };*/
+
+  const success = (position: any) => {
+    const location = position.coords;
+    latSet(location.latitude);
+    lonSet(location.longitude);
+
+    console.log('succes ready');
   };
 
-  fetchText();
+  const error = (error: any) => {
+    console.warn(`ERROR${error.code}: ${error.message}`);
+  };
+
+  useEffect(() => {
+    console.log('navigator');
+    navigator.geolocation.getCurrentPosition(success, error);
+    console.log('axios');
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5d5354d7863de7c61b429e2ef6b79da2`
+      )
+      .then((response: any) => {
+        dataSet(response.data);
+        console.log(response.data);
+      });
+  }, []);
 
   return (
     <div className='App'>
       <header className='App-header'>
-        <div>city: {city}</div>
-        <div>postal: {postal}</div>
-        <div>timezone: {timezone}</div>
+        <input
+          type='text'
+          value={location}
+          onChange={event => locationSet(event.target.value)}
+          //onKeyPress={searchLocation}
+          placeholder='Enter Location'
+        />
       </header>
     </div>
   );
