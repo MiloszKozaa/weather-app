@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // if (event.key === 'Enter') {
 //   let urlLocation = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=5d5354d7863de7c61b429e2ef6b79da2`;
@@ -13,20 +13,21 @@ import { useState, useEffect } from 'react';
 //     );
 //   });
 
-const SearchWeather = () => {
+const SearchLocation = () => {
   const [lat, latSet] = useState<number>();
   const [lon, lonSet] = useState<number>();
   const [location, locationSet] = useState<string>('');
+  const [searchUrl, searchUrlSet] = useState<string>('');
 
-  const getCityWeather = (event: any) => {
+  const getCityLocation = async (event: any) => {
     if (event.key === 'Enter') {
-      axios
+      await axios
         .get(
           `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=5d5354d7863de7c61b429e2ef6b79da2`
         )
         .then((res: any) => {
-          latSet(res.data[0].name);
-          lonSet(res.data[0].name);
+          latSet(res.data[0].lat);
+          lonSet(res.data[0].lon);
           console.log(res.data[0].name, res.data[0].lat, res.data[0].lon);
         });
       locationSet('');
@@ -39,11 +40,11 @@ const SearchWeather = () => {
         type='text'
         value={location}
         onChange={event => locationSet(event.target.value)}
-        onKeyPress={getCityWeather}
+        onKeyPress={getCityLocation}
         placeholder='Enter Location'
       />
     </>
   );
 };
 
-export default SearchWeather;
+export default SearchLocation;

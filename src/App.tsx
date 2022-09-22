@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 
-import SearchWeather from './api/SearchWeather';
+import SearchLocation from './components/SearchLocation';
 
 const App = () => {
   // const [data, dataSet] = useState({});
@@ -61,7 +61,7 @@ const App = () => {
   return (
     <div className='App'>
       <header className='App-header'>
-        <SearchWeather />
+        <SearchLocation />
       </header>
     </div>
   );
