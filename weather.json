@@ -1,0 +1,37 @@
+{
+  "coord": { "lon": 19, "lat": 50 },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 288.71,
+    "feels_like": 287.6,
+    "temp_min": 286.41,
+    "temp_max": 289.81,
+    "pressure": 1019,
+    "humidity": 49,
+    "sea_level": 1019,
+    "grnd_level": 991
+  },
+  "visibility": 10000,
+  "wind": { "speed": 1.11, "deg": 324, "gust": 1.52 },
+  "clouds": { "all": 100 },
+  "dt": 1663937670,
+  "sys": {
+    "type": 2,
+    "id": 265561,
+    "country": "PL",
+    "sunrise": 1663907487,
+    "sunset": 1663951290
+  },
+  "timezone": 7200,
+  "id": 3097660,
+  "name": "Jankowice",
+  "cod": 200
+}
