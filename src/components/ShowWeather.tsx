@@ -1,8 +1,8 @@
 type ShowWeather = {
   name?: string;
-   temp?: number;
+  temp?: number;
   main?: string;
-   pressure?: number;
+  pressure?: number;
 };
 
 const ShowWeather = ({ name, main, pressure, temp }: ShowWeather) => {

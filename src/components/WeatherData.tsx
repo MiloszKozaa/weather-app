@@ -10,7 +10,6 @@ type WeatherData = {
 
 const WeatherData = ({ lat, lon }: WeatherData) => {
   const [weatherData, weatherDataSet] = useState({});
-
   useEffect(() => {
     console.log('asdasdasd', lat, lon);
     axios
@@ -23,7 +22,11 @@ const WeatherData = ({ lat, lon }: WeatherData) => {
       });
   }, []);
 
-  return <div>aaaa</div>;
+  return (
+    <>
+      {weatherData.timezone ? <ShowWeather name={weatherData.timezone} /> : ''}
+    </>
+  );
 };
 
 export default WeatherData;

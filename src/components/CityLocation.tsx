@@ -18,7 +18,6 @@ const CityLocation = () => {
   const [lat, latSet] = useState<number>();
   const [lon, lonSet] = useState<number>();
   const [location, locationSet] = useState<string>('');
-  const [searchUrl, searchUrlSet] = useState<string>('');
 
   const getCityLocation = async (event: any) => {
     if (event.key === 'Enter') {
@@ -33,6 +32,7 @@ const CityLocation = () => {
         });
       locationSet('');
     }
+    
   };
 
   return (
@@ -44,7 +44,8 @@ const CityLocation = () => {
         onKeyPress={getCityLocation}
         placeholder='Enter Location'
       />
-      <WeatherData lat={lat} lon={lon} />
+
+      {lat && lon ? <WeatherData lat={lat} lon={lon} /> : ''}
     </>
   );
 };
