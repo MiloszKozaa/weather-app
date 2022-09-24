@@ -1,67 +1,53 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import SearchLocation from './components/SearchLocation';
 
-import CityLocation from './components/CityLocation';
+// http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=5d5354d7863de7c61b429e2ef6b79da2
+
+// https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d5354d7863de7c61b429e2ef6b79da2
 
 const App = () => {
-  // const [data, dataSet] = useState({});
-  // const [location, locationSet] = useState('');
-  // const [latitude, latitudeSet] = useState('');
-  // const [longitude, longitudeSet] = useState('');
+  const [lat, latSet] = useState<number>(0);
+  const [lon, lonSet] = useState<number>(0);
+  const [location, locationSet] = useState<string>('');
+  const [weatherData, weatherDataSet] = useState({});
 
-  // const searchLocation = (event: any) => {
-  //   if (event.key === 'Enter') {
-  //     let urlLocation = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=5d5354d7863de7c61b429e2ef6b79da2`;
-  //     axios.get(urlLocation).then((response: any) => {
-  //       latitudeSet(response.data[0].lat);
-  //       longitudeSet(response.data[0].lon);
-  //       console.log(
-  //         response.data[0].name,
-  //         response.data[0].lat,
-  //         response.data[0].lon
-  //       );
-  //     });
+  const getWeatherData = (latParametr: number, lonParametr: number) => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latParametr}&lon=${lonParametr}&appid=5d5354d7863de7c61b429e2ef6b79da2`
+      )
+      .then((res: any) => {
+        weatherDataSet(res.data);
+        console.log(res.data);
+      });
+  };
 
-  //     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d5354d7863de7c61b429e2ef6b79da2`;
-
-  //     axios.get(url).then((response: any) => {
-  //       dataSet(response.data);
-  //       console.log(response.data);
-  //     });
-  //     locationSet('');
-  //   }
-  // };
-
-  // const success = (position: any) => {
-  //   const location = position.coords;
-  //   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=5d5354d7863de7c61b429e2ef6b79da2`;
-  //   axios.get(url).then((response: any) => {
-  //     dataSet(response.data);
-  //     console.log(response.data);
-  //   });
-  // };
-
-  // const error = (error: any) => {
-  //   console.warn(`ERROR${error.code}: ${error.message}`);
-  // };
-
-  // const getCurrentPosition = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(success, error);
-  //   } else {
-  //     alert('Sorry , browser does not support geolocation!');
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCurrentPosition();
-  // }, []);
+  const getCityLocation = (event: any) => {
+    if (event.key === 'Enter') {
+      axios
+        .get(
+          `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=5d5354d7863de7c61b429e2ef6b79da2`
+        )
+        .then((res: any) => {
+          latSet(res.data[0].lon);
+          lonSet(res.data[0].lat);
+          console.log(res.data[0].name, res.data[0].lat, res.data[0].lon);
+        });
+      getWeatherData(lat, lon);
+      locationSet('');
+    }
+  };
 
   return (
     <div className='App'>
       <header className='App-header'>
-        <CityLocation />
+        <SearchLocation
+          value={location}
+          onChange={(event: any) => locationSet(event.target.value)}
+          onKeyPress={getCityLocation}
+        />
       </header>
     </div>
   );
