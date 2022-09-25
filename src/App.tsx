@@ -1,12 +1,8 @@
-import { useState, useEffect } from 'react';
-import './App.css';
-import axios from 'axios';
 import SearchLocation from './components/SearchLocation';
 import ShowWeather from './components/ShowWeather';
-
-// http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=5d5354d7863de7c61b429e2ef6b79da2
-
-// https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5d5354d7863de7c61b429e2ef6b79da2
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import './App.css';
 
 const App = () => {
   const [location, locationSet] = useState<string>('');
@@ -22,8 +18,10 @@ const App = () => {
       speed: 0,
     },
     name: '',
+    timezone: 0,
   });
-
+  const [time, timeSet] = useState<string>('00:00:00');
+  const [date, dateSet] = useState<string>('01/01/2000');
   const getWeatherData = (latParametr: number, lonParametr: number) => {
     axios
       .get(
@@ -60,6 +58,17 @@ const App = () => {
     );
   }, []);
 
+  setTimeout(() => {
+    let date = new Date();
+    console.log(weatherData.timezone);
+    timeSet(
+      `${
+        date.getHours() - 2 + weatherData.timezone / 3600
+      }:${date.getMinutes()}:${date.getSeconds()}`
+    );
+    dateSet(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
+  }, 1000);
+
   return (
     <div className='App'>
       <SearchLocation
@@ -67,7 +76,7 @@ const App = () => {
         onChange={(event: any) => locationSet(event.target.value)}
         onKeyPress={getCityLocation}
       />
-      <ShowWeather weatherData={weatherData} />
+      <ShowWeather weatherData={weatherData} time={time} date={date} />
     </div>
   );
 };

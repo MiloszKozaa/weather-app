@@ -1,4 +1,6 @@
 type ShowWeather = {
+  time?: string;
+  date?: string;
   weatherData: {
     main: {
       temp: number;
@@ -11,16 +13,21 @@ type ShowWeather = {
       speed: number;
     };
     name: string;
+    timezone: number;
   };
 };
 
 // dupa ? console.log('true') : console.log('false');
 
-const ShowWeather = ({ weatherData }: ShowWeather) => {
+const ShowWeather = ({ weatherData, time, date }: ShowWeather) => {
   if (weatherData.name !== '') {
     return (
       <>
         <div>City: {weatherData.name}</div>
+        <div>
+          {date} {time}
+        </div>
+        <div>Timezone: {weatherData.timezone / 3600}</div>
         <div>Tempereture: {weatherData.main.temp}</div>
         <div>
           Temperature min/max: {weatherData.main.temp_min} /{' '}
