@@ -1,0 +1,20 @@
+.DetailWeatherData_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.DetailWeatherData_detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .DetailWeatherData_wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

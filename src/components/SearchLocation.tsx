@@ -1,24 +1,25 @@
-import axios from 'axios';
-import { useState } from 'react';
+import { SearchLocationTypes } from '../App.types';
+import './SearchLocation.css';
+import Icon from './Icon';
 
-type SearchLocation = {
-  value?: string;
-  onChange: (event: any) => void;
-  onKeyPress: (event: any) => void;
-}
-
-const SearchLocation = ({value, onChange, onKeyPress}: SearchLocation) => {
-
+const SearchLocation = ({
+  value,
+  onChange,
+  onKeyPress,
+}: SearchLocationTypes) => {
   return (
-    <>
+    <div className='SearchLocation_wrapper_input'>
+      <Icon iconName='search' />
       <input
         type='text'
         value={value}
         onChange={onChange}
         onKeyPress={onKeyPress}
         placeholder='Enter Location'
+        className='SearchLocation_input'
       />
-    </>
+      <Icon iconName='null' />
+    </div>
   );
 };
 

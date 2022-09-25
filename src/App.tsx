@@ -1,5 +1,7 @@
 import SearchLocation from './components/SearchLocation';
 import ShowWeather from './components/ShowWeather';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -7,9 +9,14 @@ import './App.css';
 const App = () => {
   const [location, locationSet] = useState<string>('');
   const [weatherData, weatherDataSet] = useState({
+    weather: [
+      {
+        main: '',
+        icon: '03d',
+      },
+    ],
     main: {
       temp: 0,
-      feels_like: 0,
       temp_min: 0,
       temp_max: 0,
       pressure: 0,
@@ -18,11 +25,11 @@ const App = () => {
       speed: 0,
     },
     name: '',
-    timezone: 0,
   });
   const [time, timeSet] = useState<string>('00:00:00');
   const [date, dateSet] = useState<string>('01/01/2000');
   const getWeatherData = (latParametr: number, lonParametr: number) => {
+    let date = new Date();
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${latParametr}&lon=${lonParametr}&appid=5d5354d7863de7c61b429e2ef6b79da2&units=metric`
@@ -31,6 +38,9 @@ const App = () => {
         weatherDataSet(res.data);
         console.log(res.data);
       });
+
+    timeSet(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+    dateSet(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
   };
 
   const getCityLocation = (event: any) => {
@@ -58,25 +68,16 @@ const App = () => {
     );
   }, []);
 
-  setTimeout(() => {
-    let date = new Date();
-    console.log(weatherData.timezone);
-    timeSet(
-      `${
-        date.getHours() - 2 + weatherData.timezone / 3600
-      }:${date.getMinutes()}:${date.getSeconds()}`
-    );
-    dateSet(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
-  }, 1000);
-
   return (
     <div className='App'>
+      <Header />
       <SearchLocation
         value={location}
         onChange={(event: any) => locationSet(event.target.value)}
         onKeyPress={getCityLocation}
       />
       <ShowWeather weatherData={weatherData} time={time} date={date} />
+      <Footer />
     </div>
   );
 };

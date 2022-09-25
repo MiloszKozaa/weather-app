@@ -1,0 +1,23 @@
+.SearchLocation_wrapper_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  padding: 20px 30px;
+  border-radius: 50px;
+}
+
+.SearchLocation_input {
+  background: none;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+  border: 0;
+  outline: 0;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
