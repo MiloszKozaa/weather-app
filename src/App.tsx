@@ -12,7 +12,7 @@ const App = () => {
     weather: [
       {
         main: '',
-        icon: '',
+        icon: '03d',
       },
     ],
     main: {
