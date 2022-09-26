@@ -43,4 +43,4 @@ export type DetailWeatherDataTypes = {
   tempMin?: string;
   pressure?: number;
   wind?: string;
-}
+};
