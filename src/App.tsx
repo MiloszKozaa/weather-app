@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import { url } from 'inspector';
 
 const App = () => {
   const [location, locationSet] = useState<string>('');
@@ -26,8 +27,8 @@ const App = () => {
     },
     name: '',
   });
-  const [time, timeSet] = useState<string>('00:00:00');
-  const [date, dateSet] = useState<string>('01/01/2000');
+//  const [time, timeSet] = useState<string>('00:00:00');
+//  const [date, dateSet] = useState<string>('01/01/2000');
   const getWeatherData = (latParametr: number, lonParametr: number) => {
     let date = new Date();
     axios
@@ -39,8 +40,8 @@ const App = () => {
         console.log(res.data);
       });
 
-    timeSet(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
-    dateSet(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
+//    timeSet(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
+//    dateSet(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`);
   };
 
   const getCityLocation = (event: any) => {
@@ -69,14 +70,18 @@ const App = () => {
   }, []);
 
   return (
-    <div className='App'>
+    <div
+      className='App'
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/image/${weatherData.weather[0].icon}.png)`,
+      }}>
       <Header />
       <SearchLocation
         value={location}
         onChange={(event: any) => locationSet(event.target.value)}
         onKeyPress={getCityLocation}
       />
-      <ShowWeather weatherData={weatherData} time={time} date={date} />
+      <ShowWeather weatherData={weatherData}/>
       <Footer />
     </div>
   );

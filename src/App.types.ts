@@ -1,6 +1,4 @@
 export type ShowWeatherTypes = {
-  time?: string;
-  date?: string;
   weatherData: {
     weather: {
       main: string;

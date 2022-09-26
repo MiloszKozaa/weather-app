@@ -2,12 +2,7 @@ import { ShowWeatherTypes } from '../App.types';
 import MainWeatherData from './MainWeatherData';
 import DetailWeatherData from './DetailWeatherData';
 
-/*
-<div>{weatherData.weather[0].icon}</div>
-<div>{date} {time}</div>
-*/
-
-const ShowWeather = ({ weatherData, time, date }: ShowWeatherTypes) => {
+const ShowWeather = ({ weatherData }: ShowWeatherTypes) => {
   if (weatherData.name !== '') {
     return (
       <>
