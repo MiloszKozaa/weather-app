@@ -66,7 +66,7 @@ const App = () => {
     <div
       className='App'
       style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/image/${weatherData.weather[0].icon}-min.png)`,
+        backgroundImage: `url(${process.env.PUBLIC_URL}/svg/${weatherData.weather[0].icon}.svg)`,
       }}>
       <Header />
       <SearchLocation
